@@ -26,13 +26,15 @@ public class VelocityTableModel extends AbstractTableModel {
 
     public double getAverage() {
         int sum = 0;
-        int times = 0;
+        int count = 0;
         for (int i = 0; i < list.size(); i++) {
-            sum += list.get(i).getVelocityDifference();
-            times++;
+            if(list.get(i).getVelocityDifference()>0){
+                sum += list.get(i).getVelocityDifference();
+                count ++;
+            }
         }
 
-        return sum / times;
+        return sum / count;
 
     }
 

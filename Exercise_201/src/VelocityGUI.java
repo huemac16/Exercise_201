@@ -1,19 +1,32 @@
 
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class VelocityGUI extends javax.swing.JFrame {
 
     private VelocityTableModel bl = new VelocityTableModel();
+    private File f = new File("./save.ser");
     
     public VelocityGUI() {
         initComponents();
         VelList.setModel(bl);
         VelList.setDefaultRenderer(Object.class, new VelocityTableRenderer());
-        bl.add(new Measurement(LocalDate.of(2018, 10, 2), LocalTime.of(15,40), "TEST1", 50, 70));
-        bl.add(new Measurement(LocalDate.of(2018, 11, 2), LocalTime.of(23,10), "TEST2", 210, 30));
-        bl.add(new Measurement(LocalDate.of(2018, 12, 2), LocalTime.of(5,3), "TEST3", 80, 70));
+        if(!(f.exists())){
+            try {
+                f.createNewFile();
+            } catch (IOException ex) {
+            }
+        }
+        try {
+            bl.load(f);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -54,6 +67,11 @@ public class VelocityGUI extends javax.swing.JFrame {
         ContextMenu.add(average);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Messungen"));
 
@@ -123,6 +141,14 @@ public class VelocityGUI extends javax.swing.JFrame {
     private void averageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_averageActionPerformed
         JOptionPane.showMessageDialog(null, String.format("%.2f",bl.getAverage()));
     }//GEN-LAST:event_averageActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        try {
+            bl.save(f);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

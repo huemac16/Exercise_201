@@ -1,15 +1,16 @@
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class Measurement {
+public class Measurement implements Serializable{
     private LocalDate date;
     private LocalTime time;
     private String license;
     private int vel;
     private int allowed;
 
-    public Measurement(LocalDate date, LocalTime time, String license, int vel, int allowed) {
+    public Measurement(LocalDate date, LocalTime time, String license, int vel, int allowed){
         this.date = date;
         this.time = time;
         this.license = license;

@@ -12,7 +12,7 @@ public class VelocityTableRenderer implements TableCellRenderer {
         Measurement m = (Measurement) o;
         JLabel label = new JLabel();
         label.setOpaque(true);
-        label.setBackground(Color.WHITE);
+        label.setBackground(bln ? new Color(200,200,200): new Color(240,240,240));
         label.setForeground(Color.BLACK);
 
         switch (i1) {
