@@ -1,140 +1,165 @@
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
 public class VelocityDlg extends javax.swing.JDialog {
 
-   
+    private boolean ok;
+    private Measurement measurement;
+
     public VelocityDlg(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
 
-   
+    public boolean isOk() {
+        return ok;
+    }
+
+    public Measurement getMeasurment() {
+        return measurement;
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        lbDatum = new javax.swing.JLabel();
+        lbUhrzeit = new javax.swing.JLabel();
+        lbKennzeichen = new javax.swing.JLabel();
+        lbGemessen = new javax.swing.JLabel();
+        lbErlaubt = new javax.swing.JLabel();
+        tfDatum = new javax.swing.JTextField();
+        tfUhrzeit = new javax.swing.JTextField();
+        tfKennzeichen = new javax.swing.JTextField();
+        tfGemessen = new javax.swing.JTextField();
+        tfErlaubt = new javax.swing.JTextField();
+        btÜbernehmen = new javax.swing.JButton();
+        btAbbrechen = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        jLabel1.setText("jLabel1");
+        lbDatum.setText("Datum:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.weighty = 0.1;
-        getContentPane().add(jLabel1, gridBagConstraints);
+        getContentPane().add(lbDatum, gridBagConstraints);
 
-        jLabel2.setText("jLabel2");
+        lbUhrzeit.setText("Uhrzeit:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.weighty = 0.1;
-        getContentPane().add(jLabel2, gridBagConstraints);
+        getContentPane().add(lbUhrzeit, gridBagConstraints);
 
-        jLabel3.setText("jLabel3");
+        lbKennzeichen.setText("Kennzeichen:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.weighty = 0.1;
-        getContentPane().add(jLabel3, gridBagConstraints);
+        getContentPane().add(lbKennzeichen, gridBagConstraints);
 
-        jLabel4.setText("jLabel4");
+        lbGemessen.setText("V-Gemessen:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.weighty = 0.1;
-        getContentPane().add(jLabel4, gridBagConstraints);
+        getContentPane().add(lbGemessen, gridBagConstraints);
 
-        jLabel5.setText("jLabel5");
+        lbErlaubt.setText("V-Erlaubt:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.weighty = 0.1;
-        getContentPane().add(jLabel5, gridBagConstraints);
-
-        jTextField1.setText("jTextField1");
+        getContentPane().add(lbErlaubt, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.weighty = 0.1;
-        getContentPane().add(jTextField1, gridBagConstraints);
-
-        jTextField2.setText("jTextField2");
+        getContentPane().add(tfDatum, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.weighty = 0.1;
-        getContentPane().add(jTextField2, gridBagConstraints);
-
-        jTextField3.setText("jTextField3");
+        getContentPane().add(tfUhrzeit, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.weighty = 0.1;
-        getContentPane().add(jTextField3, gridBagConstraints);
-
-        jTextField4.setText("jTextField4");
+        getContentPane().add(tfKennzeichen, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.weighty = 0.1;
-        getContentPane().add(jTextField4, gridBagConstraints);
-
-        jTextField5.setText("jTextField5");
+        getContentPane().add(tfGemessen, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.weighty = 0.1;
-        getContentPane().add(jTextField5, gridBagConstraints);
+        getContentPane().add(tfErlaubt, gridBagConstraints);
 
-        jButton1.setText("jButton1");
+        btÜbernehmen.setText("Übernehmen");
+        btÜbernehmen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btÜbernehmenActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.weighty = 0.1;
-        getContentPane().add(jButton1, gridBagConstraints);
+        getContentPane().add(btÜbernehmen, gridBagConstraints);
 
-        jButton2.setText("jButton2");
+        btAbbrechen.setText("Abbrechen");
+        btAbbrechen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAbbrechenActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.weighty = 0.1;
-        getContentPane().add(jButton2, gridBagConstraints);
+        getContentPane().add(btAbbrechen, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btÜbernehmenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btÜbernehmenActionPerformed
+        measurement = new Measurement(LocalDate.parse(tfDatum.getText(), DateTimeFormatter.ofPattern("dd.MM.yyyy")), LocalTime.parse(tfUhrzeit.getText(), DateTimeFormatter.ofPattern("HH:mm")), tfKennzeichen.getText(), Integer.parseInt(tfGemessen.getText()), Integer.parseInt(tfErlaubt.getText()));
+
+        ok = true;
+        this.dispose();
+    }//GEN-LAST:event_btÜbernehmenActionPerformed
+
+    private void btAbbrechenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAbbrechenActionPerformed
+        ok = false;
+        this.dispose();
+    }//GEN-LAST:event_btAbbrechenActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -176,17 +201,17 @@ public class VelocityDlg extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JButton btAbbrechen;
+    private javax.swing.JButton btÜbernehmen;
+    private javax.swing.JLabel lbDatum;
+    private javax.swing.JLabel lbErlaubt;
+    private javax.swing.JLabel lbGemessen;
+    private javax.swing.JLabel lbKennzeichen;
+    private javax.swing.JLabel lbUhrzeit;
+    private javax.swing.JTextField tfDatum;
+    private javax.swing.JTextField tfErlaubt;
+    private javax.swing.JTextField tfGemessen;
+    private javax.swing.JTextField tfKennzeichen;
+    private javax.swing.JTextField tfUhrzeit;
     // End of variables declaration//GEN-END:variables
 }
