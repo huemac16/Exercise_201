@@ -8,7 +8,6 @@ public class VelocityTableModel extends AbstractTableModel {
 
     public void add(Measurement m) {
         list.add(m);
-
         fireTableRowsInserted(list.size() - 1, list.size() - 1);
     }
 

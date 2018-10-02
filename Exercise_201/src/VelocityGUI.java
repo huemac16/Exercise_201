@@ -19,10 +19,23 @@ public class VelocityGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        ContextMenu = new javax.swing.JPopupMenu();
+        add = new javax.swing.JMenuItem();
+        delete = new javax.swing.JMenuItem();
+        average = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         VelList = new javax.swing.JTable();
         lbfile = new javax.swing.JLabel();
+
+        add.setText("Hinzufügen");
+        ContextMenu.add(add);
+
+        delete.setText("Löschen");
+        ContextMenu.add(delete);
+
+        average.setText("Average");
+        ContextMenu.add(average);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -39,6 +52,7 @@ public class VelocityGUI extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        VelList.setComponentPopupMenu(ContextMenu);
         jScrollPane1.setViewportView(VelList);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -110,7 +124,11 @@ public class VelocityGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPopupMenu ContextMenu;
     private javax.swing.JTable VelList;
+    private javax.swing.JMenuItem add;
+    private javax.swing.JMenuItem average;
+    private javax.swing.JMenuItem delete;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbfile;
