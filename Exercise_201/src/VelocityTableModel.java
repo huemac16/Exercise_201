@@ -14,6 +14,24 @@ public class VelocityTableModel extends AbstractTableModel {
         fireTableRowsInserted(list.size() - 1, list.size() - 1);
     }
 
+    public void remove(int idx) {
+        list.remove(idx);
+
+        fireTableRowsUpdated(0, list.size());
+    }
+
+    public double getAverage() {
+        int sum = 0;
+        int times = 0;
+        for (int i = 0; i < list.size(); i++) {
+            sum += list.get(i).getVelocityDifference();
+            times++;
+        }
+
+        return sum / times;
+
+    }
+
     @Override
     public int getRowCount() {
         return list.size();
