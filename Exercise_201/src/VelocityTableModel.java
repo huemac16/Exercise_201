@@ -6,6 +6,8 @@ public class VelocityTableModel extends AbstractTableModel {
 
     private ArrayList<Measurement> list = new ArrayList<>();
 
+    private static String[] colNames = {"Datum", "Uhrzeit", "Kennzeichen", "Gemessen", "Erlaubt", "Übertretung"};
+
     public void add(Measurement m) {
         list.add(m);
 
@@ -26,6 +28,11 @@ public class VelocityTableModel extends AbstractTableModel {
     public Object getValueAt(int i, int i1) {
         Measurement s = list.get(i);
         return s;
+    }
+
+    @Override
+    public String getColumnName(int i) {
+        return colNames[i];
     }
 
 }
