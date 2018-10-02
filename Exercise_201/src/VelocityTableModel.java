@@ -1,16 +1,19 @@
 
+import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 
 public class VelocityTableModel extends AbstractTableModel {
 
+    private ArrayList<Measurement> list = new ArrayList<>();
+
     @Override
     public int getRowCount() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return list.size();
     }
 
     @Override
     public int getColumnCount() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return 6;
     }
 
     @Override
