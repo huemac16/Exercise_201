@@ -18,7 +18,7 @@ public class Measurement {
     }
     
     public int getVelocityDifference(){
-        return allowed - vel;
+        return vel - allowed;
     }
 
     public LocalDate getDate() {

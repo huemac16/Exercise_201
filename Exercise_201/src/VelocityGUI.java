@@ -1,7 +1,7 @@
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.Month;
+import javax.swing.JOptionPane;
 
 public class VelocityGUI extends javax.swing.JFrame {
 
@@ -10,6 +10,7 @@ public class VelocityGUI extends javax.swing.JFrame {
     public VelocityGUI() {
         initComponents();
         VelList.setModel(bl);
+        VelList.setDefaultRenderer(Object.class, new VelocityTableRenderer());
         bl.add(new Measurement(LocalDate.of(2018, 10, 2), LocalTime.of(15,40), "TEST1", 50, 70));
         bl.add(new Measurement(LocalDate.of(2018, 11, 2), LocalTime.of(23,10), "TEST2", 210, 30));
         bl.add(new Measurement(LocalDate.of(2018, 12, 2), LocalTime.of(5,3), "TEST3", 80, 70));
@@ -29,12 +30,27 @@ public class VelocityGUI extends javax.swing.JFrame {
         lbfile = new javax.swing.JLabel();
 
         add.setText("Hinzufügen");
+        add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addActionPerformed(evt);
+            }
+        });
         ContextMenu.add(add);
 
         delete.setText("Löschen");
+        delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteActionPerformed(evt);
+            }
+        });
         ContextMenu.add(delete);
 
         average.setText("Average");
+        average.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                averageActionPerformed(evt);
+            }
+        });
         ContextMenu.add(average);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -86,7 +102,27 @@ public class VelocityGUI extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
+        VelocityDlg dialog = new VelocityDlg(this, true);
+        dialog.setVisible(true);
+        if(dialog.isOk()){
+            bl.add(dialog.getMeasurment());
+        }
+    }//GEN-LAST:event_addActionPerformed
+
+    private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
+        int sel = VelList.getSelectedRow();
+        if(sel > -1){
+            bl.remove(sel);
+        }
+    }//GEN-LAST:event_deleteActionPerformed
+
+    private void averageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_averageActionPerformed
+        JOptionPane.showMessageDialog(null, String.format("%.2f",bl.getAverage()));
+    }//GEN-LAST:event_averageActionPerformed
 
     /**
      * @param args the command line arguments

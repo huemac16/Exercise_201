@@ -2,6 +2,8 @@
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import javax.swing.JOptionPane;
 
 public class VelocityDlg extends javax.swing.JDialog {
 
@@ -147,11 +149,16 @@ public class VelocityDlg extends javax.swing.JDialog {
         getContentPane().add(btAbbrechen, gridBagConstraints);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btÜbernehmenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btÜbernehmenActionPerformed
-        measurement = new Measurement(LocalDate.parse(tfDatum.getText(), DateTimeFormatter.ofPattern("dd.MM.yyyy")), LocalTime.parse(tfUhrzeit.getText(), DateTimeFormatter.ofPattern("HH:mm")), tfKennzeichen.getText(), Integer.parseInt(tfGemessen.getText()), Integer.parseInt(tfErlaubt.getText()));
+        try {
+            measurement = new Measurement(LocalDate.parse(tfDatum.getText(), DateTimeFormatter.ofPattern("dd.MM.yyyy")), LocalTime.parse(tfUhrzeit.getText(), DateTimeFormatter.ofPattern("HH:mm")), tfKennzeichen.getText(), Integer.parseInt(tfGemessen.getText()), Integer.parseInt(tfErlaubt.getText()));
 
+        } catch (DateTimeParseException ex) {
+            JOptionPane.showMessageDialog(null, "Bitte achten Sie auf das richtige Eingabeformat");
+        }
         ok = true;
         this.dispose();
     }//GEN-LAST:event_btÜbernehmenActionPerformed
