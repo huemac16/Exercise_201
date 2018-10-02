@@ -1,6 +1,7 @@
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import javax.swing.JOptionPane;
@@ -13,6 +14,10 @@ public class VelocityDlg extends javax.swing.JDialog {
     public VelocityDlg(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        tfDatum.setText(dtf.format(LocalDate.now()));
+        dtf = DateTimeFormatter.ofPattern("HH:mm");
+        tfUhrzeit.setText(dtf.format(LocalTime.now()));
     }
 
     public boolean isOk() {

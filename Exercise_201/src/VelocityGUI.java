@@ -27,6 +27,7 @@ public class VelocityGUI extends javax.swing.JFrame {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        lbfile.setText(f.getName());
     }
 
     @SuppressWarnings("unchecked")
