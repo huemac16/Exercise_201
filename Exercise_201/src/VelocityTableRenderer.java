@@ -32,7 +32,11 @@ public class VelocityTableRenderer implements TableCellRenderer {
                 label.setText("" + m.getAllowed() + " km/h");
                 break;
             case 5:
-                label.setText("" + m.getVelocityDifference());
+                if (m.getVelocityDifference() < 0) {
+                    label.setText("0");
+                } else {
+                    label.setText("" + m.getVelocityDifference());
+                }
 
                 if (m.getVelocityDifference() > 30) {
                     label.setBackground(Color.RED);
@@ -40,7 +44,7 @@ public class VelocityTableRenderer implements TableCellRenderer {
                     label.setBackground(Color.ORANGE);
                 } else if (m.getVelocityDifference() < 20 && m.getVelocityDifference() >= 10) {
                     label.setBackground(Color.YELLOW);
-                } else if (m.getVelocityDifference() < 10) {
+                } else if (m.getVelocityDifference() < 10 && m.getVelocityDifference() > 0) {
                     label.setBackground(Color.BLUE);
                 }
                 break;
