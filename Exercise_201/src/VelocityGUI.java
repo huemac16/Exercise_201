@@ -1,8 +1,18 @@
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.Month;
+
 public class VelocityGUI extends javax.swing.JFrame {
 
-
+    private VelocityTableModel bl = new VelocityTableModel();
+    
     public VelocityGUI() {
         initComponents();
+        VelList.setModel(bl);
+        bl.add(new Measurement(LocalDate.of(2018, 10, 2), LocalTime.of(15,40), "TEST1", 50, 70));
+        bl.add(new Measurement(LocalDate.of(2018, 11, 2), LocalTime.of(23,10), "TEST2", 210, 30));
+        bl.add(new Measurement(LocalDate.of(2018, 12, 2), LocalTime.of(5,3), "TEST3", 80, 70));
     }
 
     @SuppressWarnings("unchecked")
